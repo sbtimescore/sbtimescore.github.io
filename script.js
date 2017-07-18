@@ -95,7 +95,7 @@ function spGameClock() {
         clearInterval (interval);
         $("#GameClockText").html(secondsToText(gameCounter));
         blinkIt("GameClockBox");
-        break spGameClock;
+        return;
       } else if (gameCounter > 0) {
         $("#GameClockText").html(secondsToText(gameCounter));
         gameCounter = gameCounter - 1;
@@ -104,7 +104,7 @@ function spGameClock() {
     var interval = setInterval(timer, 1000);
   } else {
     gameClockRunning = false;
-    break spGameClock;
+    return;
     //When the game clock is stopped, the entire function stops
     //Set the gameCounter to whatever it is and stop
   }
