@@ -89,11 +89,27 @@ $(document).ready(function() {
 function spGameClock() {
   if (gameClockRunning == false) {
     gameClockRunning = true;
+    //Put the game timer here
+    function timer() {
+      if (gameCounter == 0) {
+        clearInterval (interval);
+        $("#GameClockText").html(secondsToText(gameCounter));
+        blinkIt("GameClockBox");
+        break spGameClock;
+      } else if (gameCounter > 0) {
+        $("#GameClockText").html(secondsToText(gameCounter));
+        gameCounter = gameCounter - 1;
+      } else {}
+    }
+    var interval = setInterval(timer, 1000);
   } else {
     gameClockRunning = false;
+    break spGameClock;
+    //When the game clock is stopped, the entire function stops
+    //Set the gameCounter to whatever it is and stop
   }
 
-  function timer() {
+  /*function timer() {
     if (gameCounter == 0) {
       clearInterval(interval);
       $("#GameClockText").html(secondsToText(gameCounter));
@@ -106,7 +122,7 @@ function spGameClock() {
     } else {}
   }
 
-  var interval = setInterval(timer, 1000);
+  var interval = setInterval(timer, 1000); */
 }
 
 function resetGameClock() {
