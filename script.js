@@ -98,7 +98,6 @@ function spGameClock() {
       clearInterval(interval);
       $("#GameClockText").html(secondsToText(gameCounter));
       blinkIt("GameClockBox");
-      gameClockClicked = false;
     } else if (gameCounter > 0 && gameClockRunning == true) {
       $("#GameClockText").html(secondsToText(gameCounter));
       gameCounter = gameCounter - 1;
@@ -107,15 +106,11 @@ function spGameClock() {
     } else {}
   }
 
-  if (gameClockClicked == false){
-    gameClockClicked = true;
-    var interval = setInterval(timer, 1000);
-  } else {}
+  var interval = setInterval(timer, 1000);
 }
 
 function resetGameClock() {
   gameClockRunning = false;
-  gameClockClicked = false;
   gameCounter = 480;
   $("#GameClockText").html("8:00");
   $("#GameClockBox").css("background-color", "#cccccc");
