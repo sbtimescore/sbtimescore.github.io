@@ -58,7 +58,6 @@
     position: relative;
     top: 0%;
     left: 0%;
-    border: 1px solid black;
   }
   .Game {
     height: 100%;
@@ -66,7 +65,8 @@
     position: relative;
     top: 0%;
     left: 0%;
-    border: 1px solid black;
+    border-right: 2px solid black;
+    border-left: 2px solid black;
   }
   .Button {
     position: relative;
@@ -85,7 +85,7 @@
     top: 0%;
     height: 10%;
     width: 100%;
-    border: 1px solid black;
+    border-bottom: 2px solid black;
     text-align: center;
   }
   #labels h1 {
@@ -103,7 +103,6 @@
     top: 10%;
     height: 50%;
     width: 100%;
-    border: 1px solid black;
     text-align: center;
   }
   #pointsGameClock h1 {
@@ -124,6 +123,9 @@
     border-radius: 10%;
     height: 90%;
     width: 90%;
+  }
+  #GameClock {
+    border-bottom: 2px solid black;
   }
   .ClockBox {
     position: relative;
@@ -159,7 +161,6 @@
     top: 60%;
     height: 40%;
     width: 100%;
-    border: 1px solid black;
     text-align: center;
   }
   #controlQuestionClock h1 {
