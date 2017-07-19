@@ -1,4 +1,4 @@
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1023px) {
   * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -181,25 +181,35 @@
     height: 90%;
     width: 90%;
   }
-  .TeamControlButton {
-    height: 40%;
-    width: 40%;
-  }
   .P4Button {
-    left: 5%;
-    top: 5%;
+    left: 0%;
+    top: 0%;
+    height: 60%;
+    width: 45%;
   }
   .P10Button {
-    left: 15%;
-    top: 5%;
+    left: 10%;
+    height: 60%;
+    width: 45%;
+    /*top: 5%;*/
   }
   .M4Button {
+    /*left: 5%;*/
+    top: 10%;
+    height: 30%;
+    width: 30%;
+  }
+  .RButton {
+    height: 30%;
+    width: 30%;
     left: 5%;
-    top: 15%;
+    top: 10%;
   }
   .M10Button {
-    left: 15%;
-    top: 15%;
+    left: 10%;
+    top: 10%;
+    height: 30%;
+    width: 30%;
   }
   .QuestionClockButton {
     top: 0%;

@@ -1,7 +1,6 @@
 var teamAPoints = 0;
 var teamBPoints = 0;
-var gameClockClicked = false;
-var gameClockRunning = false;
+var gameClockInterval = null;
 var gameCounter = 480;
 var questionClockClicked = false;
 var questionClockRunning = false;
@@ -63,21 +62,21 @@ function fontSizer(text, box, scale) {
 $(document).ready(function() {
   $("#TeamAPointText").html(teamAPoints);
   $("#TeamBPointText").html(teamBPoints);
-  $("#GameClockText").html("8:00");
+  $("#GameClockText").html("0:00");
   $("#QuestionClockText").html("0:00");
   fontSizer("TeamALabelText", "TeamALabel", 0.5);
   fontSizer("GameLabelText", "GameLabel", 0.5)
   fontSizer("TeamBLabelText", "TeamBLabel", 0.5);
-  fontSizer("TeamAPointText", "TeamAPointBox", 0.8);
-  fontSizer("TeamBPointText", "TeamBPointBox", 0.8);
+  fontSizer("TeamAPointText", "TeamAPointBox", 0.6);
+  fontSizer("TeamBPointText", "TeamBPointBox", 0.6);
   fontSizer("GameClockText", "GameClockBox", 0.8);
   fontSizer("QuestionClockText", "QuestionClockBox", 0.8);
   $(window).resize(function() {
     fontSizer("TeamALabelText", "TeamALabel", 0.5);
     fontSizer("GameLabelText", "GameLabel", 0.5)
     fontSizer("TeamBLabelText", "TeamBLabel", 0.5);
-    fontSizer("TeamAPointText", "TeamAPointBox", 0.8);
-    fontSizer("TeamBPointText", "TeamBPointBox", 0.8);
+    fontSizer("TeamAPointText", "TeamAPointBox", 0.6);
+    fontSizer("TeamBPointText", "TeamBPointBox", 0.6);
     fontSizer("GameClockText", "GameClockBox", 0.8);
     fontSizer("QuestionClockText", "QuestionClockBox", 0.8);
 
@@ -87,14 +86,26 @@ $(document).ready(function() {
 ///////////////////////////////////////////////////////////////
 
 function spGameClock() {
-  if (gameClockRunning == false) {
-    gameClockRunning = true;
+  if (gameClockInterval == null){
+    gameClockInterval = setInterval(timer, 1000);
+    $("#GameClockText").html(secondsToText(gameCounter));
   } else {
-    gameClockRunning = false;
-    return;
+    clearInterval(gameClockInterval);
+    gameClockInterval = null;
+    $("#GameClockText").html(secondsToText(gameCounter));
   }
 
   function timer() {
+    gameCounter--;
+    $("#GameClockText").html(secondsToText(gameCounter));
+    if (gameCounter <= 0) {
+      clearInterval(gameClockInterval);
+      interval = null;
+      blinkIt("GameClockBox");
+    }
+  }
+
+  /*function timer() {
     if (gameCounter == 0) {
       clearInterval(interval);
       $("#GameClockText").html(secondsToText(gameCounter));
@@ -107,13 +118,14 @@ function spGameClock() {
     } else {}
   }
 
-  var interval = setInterval(timer, 1000);
+  var interval = setInterval(timer, 1000);*/
 }
 
 function resetGameClock() {
-  gameClockRunning = false;
+  clearInterval(gameClockInterval);
+  interval = null;
   gameCounter = 480;
-  $("#GameClockText").html("8:00");
+  $("#GameClockText").html("0:00");
   $("#GameClockBox").css("background-color", "#cccccc");
 }
 
@@ -130,12 +142,25 @@ function p10A() {
 }
 
 function m4A() {
-  teamAPoints = teamAPoints - 4;
+  if (teamAPoints - 4 >= 0){
+    teamAPoints = teamAPoints - 4;
+  } else {
+    teamAPoints = 0;
+  }
+  $("#TeamAPointText").html(teamAPoints);
+}
+
+function rA() {
+  teamAPoints = 0;
   $("#TeamAPointText").html(teamAPoints);
 }
 
 function m10A() {
-  teamAPoints = teamAPoints - 10;
+  if (teamAPoints - 10 >= 0){
+    teamAPoints = teamAPoints - 10;
+  } else {
+    teamAPoints = 0;
+  }
   $("#TeamAPointText").html(teamAPoints);
 }
 
@@ -215,11 +240,24 @@ function p10B() {
 }
 
 function m4B() {
-  teamBPoints = teamBPoints - 4;
+  if (teamBPoints - 4 >= 0){
+    teamBPoints = teamBPoints - 4;
+  } else {
+    teamBPoints = 0;
+  }
+  $("#TeamBPointText").html(teamBPoints);
+}
+
+function rB() {
+  teamBPoints = 0;
   $("#TeamBPointText").html(teamBPoints);
 }
 
 function m10B() {
-  teamBPoints = teamBPoints - 10;
+  if (teamBPoints - 4 >= 0){
+    teamBPoints = teamBPoints - 10;
+  } else {
+    teamBPoints = 0;
+  }
   $("#TeamBPointText").html(teamBPoints);
 }
