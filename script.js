@@ -57,13 +57,22 @@ function fontSizer(text, box, scale) {
   $(textID).css("font-size", fontSize);
 }
 
-///////////////////////////////////////////////////////////////
-
-$(document).ready(function() {
-  $("#TeamAPointText").html(teamAPoints);
-  $("#TeamBPointText").html(teamBPoints);
-  $("#GameClockText").html("0:00");
-  $("#QuestionClockText").html("0:00");
+function fontIt() {
+  fontSizer("StartPause", "StartPause", 0.5)
+  fontSizer("Reset", "Reset", 0.5);
+  fontSizer("TUQuestionClock", "TUQuestionClock", 0.5);
+  fontSizer("BonusQuestionClock", "BonusQuestionClock", 0.5);
+  fontSizer("ResetQuestionClock", "ResetQuestionClock", 0.4);
+  fontSizer("TeamAP4Button", "TeamAP4Button", 0.5);
+  fontSizer("TeamAP10Button", "TeamAP10Button", 0.5);
+  fontSizer("TeamAM4Button", "TeamAM4Button", 0.5);
+  fontSizer("TeamARButton", "TeamARButton", 0.4);
+  fontSizer("TeamAM10Button", "TeamAM10Button", 0.5);
+  fontSizer("TeamBP4Button", "TeamBP4Button", 0.5);
+  fontSizer("TeamBP10Button", "TeamBP10Button", 0.5);
+  fontSizer("TeamBM4Button", "TeamBM4Button", 0.5);
+  fontSizer("TeamBRButton", "TeamBRButton", 0.4);
+  fontSizer("TeamBM10Button", "TeamBM10Button", 0.5);
   fontSizer("TeamALabelText", "TeamALabel", 0.5);
   fontSizer("GameLabelText", "GameLabel", 0.5)
   fontSizer("TeamBLabelText", "TeamBLabel", 0.5);
@@ -71,15 +80,18 @@ $(document).ready(function() {
   fontSizer("TeamBPointText", "TeamBPointBox", 0.6);
   fontSizer("GameClockText", "GameClockBox", 0.8);
   fontSizer("QuestionClockText", "QuestionClockBox", 0.8);
-  $(window).resize(function() {
-    fontSizer("TeamALabelText", "TeamALabel", 0.5);
-    fontSizer("GameLabelText", "GameLabel", 0.5)
-    fontSizer("TeamBLabelText", "TeamBLabel", 0.5);
-    fontSizer("TeamAPointText", "TeamAPointBox", 0.6);
-    fontSizer("TeamBPointText", "TeamBPointBox", 0.6);
-    fontSizer("GameClockText", "GameClockBox", 0.8);
-    fontSizer("QuestionClockText", "QuestionClockBox", 0.8);
+}
 
+///////////////////////////////////////////////////////////////
+
+$(document).ready(function() {
+  $("#TeamAPointText").html(teamAPoints);
+  $("#TeamBPointText").html(teamBPoints);
+  $("#GameClockText").html("0:00");
+  $("#QuestionClockText").html("0:00");
+  fontIt();
+  $(window).resize(function() {
+    fontIt();
   });
 });
 
