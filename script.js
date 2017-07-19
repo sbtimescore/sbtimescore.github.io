@@ -104,21 +104,6 @@ function spGameClock() {
       blinkIt("GameClockBox");
     }
   }
-
-  /*function timer() {
-    if (gameCounter == 0) {
-      clearInterval(interval);
-      $("#GameClockText").html(secondsToText(gameCounter));
-      blinkIt("GameClockBox");
-    } else if (gameCounter > 0 && gameClockRunning == true) {
-      $("#GameClockText").html(secondsToText(gameCounter));
-      gameCounter = gameCounter - 1;
-    } else if (gameCounter > 0 && gameClockRunning == false) {
-      clearInterval(interval);
-    } else {}
-  }
-
-  var interval = setInterval(timer, 1000);*/
 }
 
 function resetGameClock() {
